@@ -1,17 +1,14 @@
 #!/bin/bash
 set -e -u -o pipefail
 
-# Uncomment line bellow to dynamically download config files every time the container runs
-# source /app/ovpn/get-ovpn-files.sh
-
-source /app/ovpn/servers_recommendations.sh
-
 . /app/date.sh --source-only
 
+IP="$(dig +short $SERVER)"
+
+echo "$SERVER" > /tmp/nordvpn_hostname
+
 echo ########################################################
-echo "$(adddate) INFO: Connection to server: $SERVERNAME"
-echo "$(adddate) INFO: Current load: $LOAD"
-echo "$(adddate) INFO: Info updated at: $UPDATED_AT"
+echo "$(adddate) INFO: Connection to server: $SERVER"
 echo "$(adddate) INFO: Server IP: $IP"
 echo "$(adddate) INFO: Protocol: $PROTOCOL"
 echo ########################################################

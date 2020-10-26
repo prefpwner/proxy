@@ -1,6 +1,6 @@
 #!/bin/sh
 . /app/date.sh --source-only
-sleep 10
+sleep 5
 
 # Return traffic that went through OpenVPN works.
 gw=$(ip route | awk '/default/ {print $3}')
