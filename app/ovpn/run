@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e -u -o pipefail
 
-source /app/ovpn/get-ovpn-files.sh
+# Uncomment line bellow to dynamically download config files every time the container runs
+# source /app/ovpn/get-ovpn-files.sh
+
 source /app/ovpn/servers_recommendations.sh
 
 . /app/date.sh --source-only
