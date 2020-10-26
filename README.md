@@ -1,3 +1,5 @@
+This is a clone of [Joentje/nordvpn-proxy](https://github.com/Joentje/nordvpn-proxy) that aims to be optimized for speed. Rather that download NordVPN config files for every new container, the `.ovpn` files are built into the image. This significantly improve the time it takes for the proxy to be in a ready state.
+
 [![logo](https://s1.nordcdn.com/nordvpn/media/1.90.0/images/global/favicon/favicon-196x196.png)](https://nordvpn.com)
 
 Alpine with OpenVPN and Privoxy to use your NordVPN account.
