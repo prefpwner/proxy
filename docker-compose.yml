@@ -18,8 +18,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ovpn-data:/app/ovpn/config
     environment:
-      - NORDVPN_USERNAME=${USERNAME}
-      - NORDVPN_PASSWORD=${PASSWORD}
+      - USERNAME=${NORDVPN_USERNAME}
+      - PASSWORD=${NORDVPN_PASSWORD}
       - SERVER=fr399.nordvpn.com
       - LOCAL_NETWORK=192.168.1.0/24
 
@@ -40,8 +40,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ovpn-data:/app/ovpn/config
     environment:
-      - NORDVPN_USERNAME=${USERNAME}
-      - NORDVPN_PASSWORD=${PASSWORD}
+      - USERNAME=${NORDVPN_USERNAME}
+      - PASSWORD=${NORDVPN_PASSWORD}
       - SERVER=fr521.nordvpn.com
       - LOCAL_NETWORK=192.168.1.0/24
 
