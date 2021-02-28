@@ -1,26 +1,50 @@
-version: '3'
+version: '3.7'
+
 services:
-  vpn:
-    image: jeroenslot/nordvpn-proxy:latest
-    cap_add:
-      - NET_ADMIN
+  proxy_1:
+    container_name: proxy_1
+    hostname: proxy_1
+    image: proxy:latest
+    restart: always
     devices:
       - /dev/net/tun
+    privileged: true
     dns:
-      - 103.86.96.100
-      - 103.86.99.100
+      - 208.67.222.222
+      - 208.67.220.220
+    ports:
+      - 8844:8118
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ovpn-data:/app/ovpn/config
     environment:
-      - USERNAME=<nordvpn_username>
-      - PASSWORD=<nordvpn_password>
+      - USERNAME=$USERNAME
+      - PASSWORD=$PASSWORD
+      - SERVER=fr399.nordvpn.com
       - LOCAL_NETWORK=192.168.1.0/24
-    networks:
-      - default
-    ports:
-      - 8118:8118
+
+  proxy_2:
+    container_name: proxy_2
+    hostname: proxy_2
+    image: proxy:latest
     restart: always
+    devices:
+      - /dev/net/tun
+    privileged: true
+    dns:
+      - 208.67.222.222
+      - 208.67.220.220
+    ports:
+      - 8845:8118
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ovpn-data:/app/ovpn/config
+    environment:
+      - USERNAME=$USERNAME
+      - PASSWORD=$PASSWORD
+      - SERVER=fr521.nordvpn.com
+      - LOCAL_NETWORK=192.168.1.0/24
+
 
 volumes:
   ovpn-data:
