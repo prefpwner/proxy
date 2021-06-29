@@ -18,33 +18,32 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ovpn-data:/app/ovpn/config
     environment:
-      - USERNAME=${NORDVPN_USERNAME}
-      - PASSWORD=${NORDVPN_PASSWORD}
-      - SERVER=fr399.nordvpn.com
-      - LOCAL_NETWORK=192.168.1.0/24
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - SERVER=${SERVER}
+      - LOCAL_NETWORK=${LOCAL_NETWORK}
 
-  proxy_2:
-    container_name: proxy_2
-    hostname: proxy_2
-    image: proxy:latest
-    restart: always
-    devices:
-      - /dev/net/tun
-    privileged: true
-    dns:
-      - 208.67.222.222
-      - 208.67.220.220
-    ports:
-      - 8845:8118
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ovpn-data:/app/ovpn/config
-    environment:
-      - USERNAME=${NORDVPN_USERNAME}
-      - PASSWORD=${NORDVPN_PASSWORD}
-      - SERVER=fr521.nordvpn.com
-      - LOCAL_NETWORK=192.168.1.0/24
-
+  # proxy_2:
+  #   container_name: proxy_2
+  #   hostname: proxy_2
+  #   image: proxy:latest
+  #   restart: always
+  #   devices:
+  #     - /dev/net/tun
+  #   privileged: true
+  #   dns:
+  #     - 208.67.222.222
+  #     - 208.67.220.220
+  #   ports:
+  #     - 8845:8118
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ovpn-data:/app/ovpn/config
+  #   environment:
+  #     - USERNAME=${NORDVPN_USERNAME}
+  #     - PASSWORD=${NORDVPN_PASSWORD}
+  #     - SERVER=fr521.nordvpn.com
+  #     - LOCAL_NETWORK=192.168.1.0/24
 
 volumes:
   ovpn-data:
